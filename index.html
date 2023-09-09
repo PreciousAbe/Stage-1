@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Data Showcase</title>
+  <style>
+    /* CSS Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .container {
+      margin-top: 2em;
+      align-items: center;
+      /* padding: 20px; */
+      border: 1px solid #ccc;
+      /* box-shadow: 5px px 5px 5px grey; */
+      border-radius: 5px;
+      background-color: plum;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    img {
+      max-width: 10em;
+      border-radius: 40%;
+      margin: 10px auto;
+    }
+
+    a {
+      color: white;
+      font-weight: 300;
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: black;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="container">
+      <h2 data-testid="name">Name: Precious Abe</h2>
+      <p data-testid="age">Age: 26</p>
+      <p data-testid="email">Email: Precious.abe@yahoo.com</p>
+      <p data-testid="slackUserName">Username: PreciousAbe</p>
+
+      <img src="2022_11_16_16_43_IMG_7825.JPG" alt="Your Slack Name" data-testid="slackDisplayImage">
+
+      <p data-testid="currentDayOfTheWeek">Current Day of the Week: <span id="dayOfWeek"></span></p>
+
+      <p data-testid="currentDateTime">Current Date and Time (UTC): <span id="dateTime"></span></p>
+
+      <p data-testid="myTrack">Track: Frontend</p>
+
+      <p data-testid="githubURL"><a href="https://github.com/PreciousAbe" target="_blank">GitHub
+          Repository</a></p>
+    </div>
+
+    <script>
+      // JavaScript for current day of the week
+      const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+      const dayOfWeekElement = document.getElementById("dayOfWeek");
+      const currentDate = new Date();
+      const currentDayOfWeek = daysOfWeek[currentDate.getUTCDay()];
+      dayOfWeekElement.textContent = currentDayOfWeek;
+
+      // JavaScript for current date and time in UTC time zone
+      const dateTimeElement = document.getElementById("dateTime");
+      const options = {
+        timeZone: "UTC",
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric'
+      };
+      const currentDateTimeString = new Intl.DateTimeFormat('en-US', options).format(currentDate);
+      dateTimeElement.textContent = currentDateTimeString;
+    </script>
+</body>
+
+</html>
